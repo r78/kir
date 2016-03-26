@@ -4,11 +4,7 @@
  * or more blanks by a single blank */
 
 main() {
-    int c, nb, nt, nl;
-
-    nb = 0;
-    nt = 0;
-    nl = 0;
+    int c;
 
     while ((c = getchar()) != EOF) {
         if (c == ' ') {

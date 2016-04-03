@@ -13,7 +13,7 @@ main() {
   char line[MAXLINE];  
   
   while ((len = get_line(line, MAXLINE)) > 0) {
-    fold(line, 40);
+    fold(line, 10);
   }
   return 0;
 }   
@@ -29,9 +29,7 @@ void fold(char s[], int pos) {
   char c; 
   char buf[pos];
   int pos_space = -1;
-  int j = 0;
   int k = 0;
-  int l;
   int col = 0;
 
   for (i = 0; (c = s[i]) != '\0'; i++) {

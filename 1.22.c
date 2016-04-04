@@ -1,6 +1,7 @@
 #include <stdio.h>
 #define MAXLINE 1000 /* maximum input line length */
 
+void printbuf(char buf[], int k);
 void fold(char s[], int pos);
 int get_line(char line[], int maxline);
 

@@ -5,7 +5,7 @@
 
 int get_line(char line[], int maxline);
 void uncomment(char s[], int len);
-int in_ml, ml_end, eol;
+int in_ml, ml_end;
 
 /* removes all coments from a c program 
 don't forget to handle quoted strings and characters properly
@@ -14,7 +14,7 @@ c comments do not nest */
 int main() {
   int len;
   char line[MAXLINE];
-  extern int in_ml, ml_end, eol;
+  extern int in_ml, ml_end;
   in_ml = FALSE;
   ml_end = -1;
 
@@ -27,11 +27,8 @@ int main() {
 void uncomment(char s[], int len) {
   int i;
   char c;
-  int cmt_pos = -1;
   int ml_start = -1;
-  int in_cmt = FALSE;
-  extern int in_ml, ml_end, eol;
-  eol = FALSE;
+  extern int in_ml, ml_end;
   
   for (i = 0; (c = s[i]) != '\0'; i++) {
     //TODO check if we are inside quoted text
@@ -72,4 +69,3 @@ int get_line(char s[], int lim) {
   s[i] = '\0';
   return i;
 }
-

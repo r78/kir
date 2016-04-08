@@ -5,7 +5,7 @@
 
 int get_line(char line[], int maxline);
 void uncomment(char s[], int len);
-int in_cmt, cmt_end, in_quote;
+int in_cmt, cmt_end, in_quote, quote_chr;
 
 /* removes all coments from a c program 
 don't forget to handle quoted strings and characters properly
@@ -29,13 +29,14 @@ void uncomment(char s[], int len) {
   int i;
   char c;
   int cmt_start = -1;
-  extern int in_cmt, cmt_end, in_quote;
+  extern int in_cmt, cmt_end, in_quote, quote_chr;
   
   for (i = 0; (c = s[i]) != '\0'; i++) {
     //check if we are inside quoted text
     if (in_quote == FALSE) {
-      if (c == '"') {
+      if (c == '"' || c == '\'') {
         printf("%c", c);
+        quote_chr = c;
         in_quote = TRUE;
       }
       if (in_quote == FALSE) {
@@ -59,8 +60,10 @@ void uncomment(char s[], int len) {
       }
     } else {
       printf("%c", c);
-      if (c == '"')
+      if (c == quote_chr) {
         in_quote = FALSE;
+        quote_chr = '\0';
+      }
     }
   }
 }

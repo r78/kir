@@ -9,21 +9,10 @@ void expand(char s1[], char s2[]);
 void test(char s1[], char s2[]);
 
 int main() {
-    char s1[200] = "a-z";
-    char s2[200];
+    char s1[4000] = "a-z / 0-9 / a-b-c / a-z0-9";
+    //char s1[4000] = "a-f / 0-4";
+    char s2[4000];
     test(s1, s2);
-
-    char s3[200] = "0-9";
-    char s4[200];
-    test(s3, s4);
-
-    char s5[200] = "a-b-c";
-    char s6[200];
-    test(s5, s6);
-
-    char s7[200] = "a-z0-9";
-    char s8[200];
-    test(s7, s8);
 
     return 0;
 }
@@ -45,11 +34,11 @@ void expand(char s1[], char s2[]) {
         } else {
           c = s1[i-1];
           j--;
-          while (c <= s1[i+1]) {
-            s2[j++] = c;
+          j--;
+          while (c < s1[i+1]) {
+            s2[++j] = c;
             c++;
           }
-            //s2[j++] = '@';
         }
         break;
       default:
@@ -59,6 +48,5 @@ void expand(char s1[], char s2[]) {
     i++;
     j++;
   }
-  j--;
-  s2[--j] = '\0';
+  s2[j] = '\0';
 }

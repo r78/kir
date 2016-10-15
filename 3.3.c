@@ -9,6 +9,7 @@ void expand(char s1[], char s2[]);
 void test(char s1[], char s2[]);
 
 int main() {
+
     char s1[200] = "a-z";
     char s2[200];
     test(s1, s2);
@@ -28,37 +29,37 @@ int main() {
     return 0;
 }
 
-void test(char s1[], char s2[]) {
-  expand(s1, s2);
-  printf("%s = %s\n", s1, s2);
+void test(char t1[], char t2[]) {
+  expand(t1, t2);
+  printf("%s = %s\n", t1, t2);
 }
 
-void expand(char s1[], char s2[]) {
+void expand(char e1[], char e2[]) {
   int i = 0;
   int j = 0;
   char c;
-  while (s1[i] != '\0') {
-    switch(s1[i]){
+  while (e1[i] != '\0') {
+    switch(e1[i]){
       case '-':
         if (i == 0) {
-          s2[j] = s1[i];
+          e2[j] = e1[i];
         } else {
-          c = s1[i-1];
+          c = e1[i-1];
           j--;
-          while (c <= s1[i+1]) {
-            s2[j++] = c;
+          while (c <= e1[i+1]) {
+            e2[j++] = c;
             c++;
           }
-            //s2[j++] = '@';
+            //e2[j++] = '@';
         }
         break;
       default:
-        s2[j] = s1[i];
+        e2[j] = e1[i];
         break;
     }
     i++;
     j++;
   }
   j--;
-  s2[--j] = '\0';
+  e2[--j] = '\0';
 }

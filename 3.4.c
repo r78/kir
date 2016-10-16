@@ -36,7 +36,7 @@ void itoa(int n, char s[]) {
 }
 
 int main() {
-    char snum[3];
+    char snum[12];
     int n = INT_MIN;
     itoa(n, snum);
     printf("%s\n", snum);
